@@ -14,4 +14,11 @@ const getRandomUser = (req, res) => {
 	res.send(result);
 };
 
-module.exports = { getRandomUser, getUsers };
+// SAVW A USER
+const saveUser = (req, res) => {
+	const user = req.body;
+	users.push(user);
+	res.send(users);
+};
+
+module.exports = { getRandomUser, getUsers, saveUser };
