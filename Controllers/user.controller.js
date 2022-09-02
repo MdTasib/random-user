@@ -14,11 +14,30 @@ const getRandomUser = (req, res) => {
 	res.send(result);
 };
 
-// SAVW A USER
+// SAVE A USER
 const saveUser = (req, res) => {
 	const user = req.body;
 	users.push(user);
 	res.send(users);
 };
 
-module.exports = { getRandomUser, getUsers, saveUser };
+// UPDATE A USER
+const updateUser = (req, res) => {
+	const { id } = req.params;
+	const currentUser = req.body;
+	const findUser = users.find(user => user?.id === Number(id));
+
+	if (findUser) {
+		findUser.id = currentUser.id;
+		findUser.address = currentUser.address;
+		findUser.gender = currentUser.gender;
+		findUser.name = currentUser.name;
+		findUser.contact = currentUser.contact;
+		findUser.photoUrl = currentUser.photoUrl;
+	} else {
+		return res.send("User not found. Please give a valid id");
+	}
+	res.send(users);
+};
+
+module.exports = { getRandomUser, getUsers, saveUser, updateUser };

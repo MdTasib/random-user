@@ -3,6 +3,7 @@ const {
 	getRandomUser,
 	getUsers,
 	saveUser,
+	updateUser,
 } = require("../Controllers/user.controller");
 
 const router = express.Router();
@@ -16,5 +17,8 @@ router.route("/random").get(getRandomUser);
 
 // SAVE A USER
 router.route("/save").post(saveUser);
+
+// UPDATE A USER
+router.route("/update/:id").patch(updateUser);
 
 module.exports = router;
