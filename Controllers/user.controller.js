@@ -1,4 +1,4 @@
-const users = require("../Data/data.json");
+let users = require("../Data/data.json");
 
 // GET ALL USERS
 const getUsers = (req, res) => {
@@ -37,7 +37,15 @@ const updateUser = (req, res) => {
 	} else {
 		return res.send("User not found. Please give a valid id");
 	}
+
+	res.send(findUser);
+};
+
+// DELETE A USER
+const deleteUser = (req, res) => {
+	const { id } = req.params;
+	users = users.filter(user => user.id !== Number(id));
 	res.send(users);
 };
 
-module.exports = { getRandomUser, getUsers, saveUser, updateUser };
+module.exports = { getRandomUser, getUsers, saveUser, updateUser, deleteUser };
