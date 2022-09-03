@@ -11,18 +11,18 @@ const router = express.Router();
 
 // GET ALL USERS - IF YOU WENT, YOU CAN USE QUERY PARAMETOR
 // (http://localhost:5000/user/all?size=number)
-router.route("/all").get(getUsers);
+router.get("/all", getUsers);
 
 // GET A RANDOM USER ROUTE
-router.route("/random").get(getRandomUser);
+router.get("/random", getRandomUser);
 
 // SAVE A USER
-router.route("/save").post(saveUser);
+router.post("save", saveUser);
 
 // UPDATE A USER
-router.route("/update/:id").patch(updateUser);
+router.patch("/update/:id", updateUser);
 
 // DELETE A USER
-router.route("/delete/:id").delete(deleteUser);
+router.delete("/delete/:id", deleteUser);
 
 module.exports = router;
